@@ -12,7 +12,26 @@
   },
   "tauri": {
     "allowlist": {
+      "dialog": {
+        "all": false,
+        "ask": false,
+        "confirm": false,
+        "message": false,
+        "open": true,
+        "save": true
+      },
       "all": false,
+      "fs": {
+        "all": true,
+        "readDir": true,
+        "scope": [
+          "$HOME/**/*",
+          "$DESKTOP/*"
+        ]
+      },
+      "path": {
+        "all": true
+      },
       "shell": {
         "all": false,
         "open": true
