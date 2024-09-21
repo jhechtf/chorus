@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@tauri-apps/api": "^1.4.0",
+    "chorus": "file:",
     "lucide-svelte": "^0.277.0",
     "monaco-editor": "^0.43.0"
   },
@@ -22,7 +23,7 @@
     "@tsconfig/svelte": "^5.0.2",
     "autoprefixer": "^10.4.15",
     "postcss": "^8.4.29",
-    "svelte": "^4.0.5",
+    "svelte": "^5.0.0-next.246",
     "svelte-check": "^3.4.6",
     "svelte-preprocess": "^5.0.0",
     "tailwindcss": "^3.3.3",

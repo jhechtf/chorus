@@ -1,6 +1,6 @@
 <script lang="ts">
   import type monaco from 'monaco-editor';
-  import { onMount, setContext } from 'svelte';
+  import { onMount } from 'svelte';
   import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
   import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker';
   import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
@@ -52,5 +52,6 @@
   });
 </script>
 
-<div bind:this={divEl} class="h-full flex-grow" />
+<div bind:this={divEl} class="h-full flex-grow">
+</div>
 
