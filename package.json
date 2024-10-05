@@ -8,18 +8,23 @@
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "tauri": "tauri"
+    "tauri": "tauri",
+    "format": "biome format --write src/",
+    "format:check": "biome format src/",
+    "lint": "biome lint src/"
   },
   "dependencies": {
-    "@tauri-apps/api": "^1.4.0",
+    "@tauri-apps/api": ">=2.0.0-rc.0",
+    "@tauri-apps/plugin-fs": "~2.0.0-rc",
+    "@tauri-apps/plugin-shell": ">=2.0.0-rc.0",
     "chorus": "file:",
-    "lucide-svelte": "^0.277.0",
+    "lucide-svelte": "^0.447.0",
     "monaco-editor": "^0.43.0"
   },
   "devDependencies": {
-    "@sveltejs/kit": "^1.24.1",
-    "@sveltejs/vite-plugin-svelte": "^2.4.2",
-    "@tauri-apps/cli": "^1.4.0",
+    "@biomejs/biome": "1.9.3",
+    "@sveltejs/vite-plugin-svelte": "^4.0.0-next.6",
+    "@tauri-apps/cli": "2.0.0-rc.18",
     "@tsconfig/svelte": "^5.0.2",
     "autoprefixer": "^10.4.15",
     "postcss": "^8.4.29",
@@ -29,6 +34,6 @@
     "tailwindcss": "^3.3.3",
     "tslib": "^2.6.0",
     "typescript": "^5.0.2",
-    "vite": "^4.4.4"
+    "vite": "^5.0.3"
   }
 }
