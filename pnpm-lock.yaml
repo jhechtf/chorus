@@ -11,6 +11,9 @@ importers:
       '@tauri-apps/api':
         specifier: '>=2.0.0-rc.0'
         version: 2.0.1
+      '@tauri-apps/plugin-dialog':
+        specifier: ^2.0.0
+        version: 2.0.0
       '@tauri-apps/plugin-fs':
         specifier: ~2.0.0-rc
         version: 2.0.0
@@ -468,6 +471,9 @@ packages:
     resolution: {integrity: sha512-43PjSEISHI3uH2jyR7QlEJUv1yQYlCOvm5eEdadhHIooV5Dqjs6zkddwEJuHYRpSLI/IfiQ8VPBYrw/GfyvhCA==}
     engines: {node: '>= 10'}
     hasBin: true
+
+  '@tauri-apps/plugin-dialog@2.0.0':
+    resolution: {integrity: sha512-ApNkejXP2jpPBSifznPPcHTXxu9/YaRW+eJ+8+nYwqp0lLUtebFHG4QhxitM43wwReHE81WAV1DQ/b+2VBftOA==}
 
   '@tauri-apps/plugin-fs@2.0.0':
     resolution: {integrity: sha512-BNEeQQ5aH8J5SwYuWgRszVyItsmquRuzK2QRkVj8Z0sCsLnSvJFYI3JHRzzr3ltZGq1nMPtblrlZzuKqVzRawA==}
@@ -1422,6 +1428,10 @@ snapshots:
       '@tauri-apps/cli-win32-ia32-msvc': 2.0.0-rc.18
       '@tauri-apps/cli-win32-x64-msvc': 2.0.0-rc.18
 
+  '@tauri-apps/plugin-dialog@2.0.0':
+    dependencies:
+      '@tauri-apps/api': 2.0.1
+
   '@tauri-apps/plugin-fs@2.0.0':
     dependencies:
       '@tauri-apps/api': 2.0.1
@@ -1520,6 +1530,7 @@ snapshots:
   chorus@file:(svelte@5.0.0-next.262):
     dependencies:
       '@tauri-apps/api': 2.0.1
+      '@tauri-apps/plugin-dialog': 2.0.0
       '@tauri-apps/plugin-fs': 2.0.0
       '@tauri-apps/plugin-shell': 2.0.0
       lucide-svelte: 0.447.0(svelte@5.0.0-next.262)

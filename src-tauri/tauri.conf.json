@@ -1,7 +1,7 @@
 {
   "build": {
-    "beforeDevCommand": "npm run dev",
-    "beforeBuildCommand": "npm run build",
+    "beforeDevCommand": "pnpm dev",
+    "beforeBuildCommand": "pnpm build",
     "frontendDist": "../dist",
     "devUrl": "http://localhost:1420"
   },
@@ -19,7 +19,7 @@
   "productName": "chorus",
   "mainBinaryName": "chorus",
   "version": "0.0.0",
-  "identifier": "com.tauri.dev",
+  "identifier": "com.chorus.app",
   "plugins": {},
   "app": {
     "withGlobalTauri": false,
