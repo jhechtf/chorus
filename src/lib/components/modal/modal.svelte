@@ -1,50 +1,70 @@
 <script lang="ts">
-  import LazyLoader from "../lazy-loader/lazy-loader.svelte";
-  import type { Snippet } from "svelte";
+import type { Snippet } from 'svelte';
 
-  interface Props {
-    children: Snippet<[{
-      open: boolean;
-      close: () => void;
-    }]>;
-    header?: Snippet<[{
-      open: boolean;
-      close: () => void;
-    }]>;
-    footer?: Snippet<[{
-      open: boolean;
-      close: () => void;
-    }]>;
-    open: boolean;
+interface Props {
+  children: Snippet<
+    [
+      {
+        open: boolean;
+        close: () => void;
+      },
+    ]
+  >;
+  header?: Snippet<
+    [
+      {
+        open: boolean;
+        close: () => void;
+      },
+    ]
+  >;
+  footer?: Snippet<
+    [
+      {
+        open: boolean;
+        close: () => void;
+      },
+    ]
+  >;
+  open?: boolean;
+  onclose?: () => void;
+}
+
+let {
+  open = $bindable(false),
+  children,
+  header,
+  footer,
+  onclose = () => {},
+}: Props = $props();
+
+let dialogEl: HTMLDialogElement;
+
+$effect(() => {
+  if (open && dialogEl) {
+    dialogEl.showModal();
   }
+});
 
-  let { open = $bindable(false), children, header, footer}: Props = $props();
+$effect(() => {
+  if (!open && dialogEl) {
+    dialogEl.close();
+  }
+});
 
-
-  let dialogEl: HTMLDialogElement;
-
-  $effect(() => {
-    if(open && dialogEl) {
-      dialogEl.showModal();
-    }
-  })
-
-  $effect(() => {
-    if(!open && dialogEl) {
-      dialogEl.close();
-    }
-  })
-
+$effect(() => {
+  if (dialogEl) {
+    dialogEl.addEventListener('close', () => {
+      open = false;
+      onclose();
+    });
+  }
+});
 </script>
 
 <dialog
-  class="text-zinc-50 shadow shadow-zinc-400/30 w-10/12 p-3 backdrop:bg-slate-700/40 bg-zinc-800"
+  class="backdrop:bg-slate-700/40 w-full"
   bind:this={dialogEl}
-  onclick={(e) => {
-    if(e.target === dialogEl) {
-      dialogEl.close();
-    }
-  }}
 >
   {#if header}
     {@render header({
