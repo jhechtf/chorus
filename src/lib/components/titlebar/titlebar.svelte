@@ -16,7 +16,7 @@ currentWindow.onResized(async () => {
 });
 </script>
 
-<div data-tauri-drag-region class="flex justify-between p-2">
+<div data-tauri-drag-region class="flex justify-between p-2 sticky top-0 box-border bg-zinc-900">
   <Menu />
 
   <Search />
