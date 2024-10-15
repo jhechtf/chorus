@@ -30,15 +30,15 @@ setContext<TabContext>('tabs', {
 });
 </script>
 
-<div class="tabs flex flex-col">
-  <header class="flex">
+<div class="tabs flex flex-col flex-grow">
+  <header class="flex px-4">
     {#each Object.entries(tabs) as [id, tab]}
       <button class="p-2" class:bg-zinc-800={tab === active} class:rounded-t-md={tab === active} onclick={() => active = tab}>  
         {tab.name}
       </button>
     {/each}
   </header>
-  <section class="bg-zinc-800">
+  <section class="bg-zinc-800 flex-grow">
     {@render children()}
   </section>
 </div>

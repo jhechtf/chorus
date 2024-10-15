@@ -8,7 +8,7 @@ import Tabs from '../lib/components/tabs/tabs.svelte';
 import Titlebar from '../lib/components/titlebar/titlebar.svelte';
 import { workspace } from '../lib/providers/workspace.svelte';
 import { readTextFileOrCreate } from '../lib/utils/readFile';
-import { keyboardShortcuts } from '../lib/providers/keyboard.svelte';
+import { keyboardShortcuts } from '../lib/providers/keybindings.svelte';
 
 console.info(keyboardShortcuts.settingsDir);
 
@@ -71,11 +71,6 @@ $effect(() => {
         bitches ain't shit but hoes and tricks
       </Tab>
     </Tabs>
-    
-    <div class="bg-zinc-800 p-2 flex-grow">
-      I am the editors
-    </div>
-    
   </div>
 </div>
 

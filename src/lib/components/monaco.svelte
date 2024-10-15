@@ -21,7 +21,7 @@ let { value, filepath }: Props = $props();
 async function initMonaco() {
   // @ts-ignore
   self.MonacoEnvironment = {
-    getWorker: function (_moduleId: any, label: string) {
+    getWorker: (_moduleId: any, label: string) => {
       if (label === 'json') {
         return new jsonWorker();
       }
@@ -67,24 +67,8 @@ async function initMonaco() {
 }
 
 onMount(async () => {
-  // @ts-ignore
-  self.MonacoEnvironment = {
-    getWorker: function (_moduleId: any, label: string) {
-      if (label === 'json') {
-        return new jsonWorker();
-      }
-      if (label === 'css' || label === 'scss' || label === 'less') {
-        return new cssWorker();
-      }
-      if (label === 'html' || label === 'handlebars' || label === 'razor') {
-        return new htmlWorker();
-      }
-      if (label === 'typescript' || label === 'javascript') {
-        return new tsWorker();
-      }
-      return new editorWorker();
-    },
-  };
+  
+  initMonaco();
 
   Monaco = await import('monaco-editor');
 
