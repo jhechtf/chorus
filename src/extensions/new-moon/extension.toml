@@ -1,0 +1,13 @@
+[package]
+
+id = "chorus-default-theme"
+publisher = "chorus"
+version = "0.0.0"
+description = "Default theme for chorus"
+
+[extension]
+
+provides = ["theme"]
+
+[theme]
+json = "./theme.json"
