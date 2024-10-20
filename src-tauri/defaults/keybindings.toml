@@ -1,0 +1,7 @@
+[[bindings]]
+key = "ctrl+shift+c"
+command = "core.copy"
+
+[[bindings]]
+sequence = ["leader", "f", "f"]
+command = "core.showFileFinderQuickpicker"

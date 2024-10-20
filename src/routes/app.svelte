@@ -8,17 +8,12 @@ import Tabs from '../lib/components/tabs/tabs.svelte';
 import Titlebar from '../lib/components/titlebar/titlebar.svelte';
 import { workspace } from '../lib/providers/workspace.svelte';
 import { readTextFileOrCreate } from '../lib/utils/readFile';
-import { keyboardShortcuts } from '../lib/providers/keyboard.svelte';
-
-console.info(keyboardShortcuts.settingsDir);
 
 let fileTreeOpen = $state(false);
 
 async function init() {
-
   const workdir = await readTextFileOrCreate('last.txt', { baseDir: BaseDirectory.AppCache });
   if(workdir !== '') workspace.setDir(workdir.split('\n'));
-
 }
 
 async function updateSettingStuffData() {
@@ -40,7 +35,6 @@ $effect(() => {
 </script>
 
 <svelte:document onkeydown={(e) => {
-  console.info(e.key, e.currentTarget === document);
   if(e.key === 'f') {
     fileTreeOpen = true;
   }
@@ -54,7 +48,7 @@ $effect(() => {
 <Drawer class="shadow-lg overflow-auto" bind:open={fileTreeOpen} side="left">
   <div class="p-3">
     {#each workspace.files as file}
-    <p>{file}</p>
+      <p>{file}</p>
     {/each}
   </div>
 </Drawer>
@@ -62,7 +56,7 @@ $effect(() => {
 <div class="app-shell">
   <Rail />
 
-  <div class="editors flex-grow flex flex-col">
+  <div class="editors flex-grow flex">
     <Tabs>
       <Tab id="file-name" name="src/file/file1.ts">
         I am a bunch of text here
@@ -71,11 +65,6 @@ $effect(() => {
         bitches ain't shit but hoes and tricks
       </Tab>
     </Tabs>
-    
-    <div class="bg-zinc-800 p-2 flex-grow">
-      I am the editors
-    </div>
-    
   </div>
 </div>
 

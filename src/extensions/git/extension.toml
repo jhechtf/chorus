@@ -1,0 +1,20 @@
+[package]
+
+id = "chorus-git-extension"
+publisher = "chorus"
+version = "0.0.0"
+description = "Git extension for chorus"
+
+[extension]
+
+provides = ["view.components", "keybindings"]
+
+[[view.components]]
+
+name = "sidebar-view"
+path = "./dist/sidebar.js"
+
+[[view.components]]
+
+name = "full-view"
+path = "./dist/full.js"
