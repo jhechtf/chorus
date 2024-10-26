@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 
 // import { sveltekit } from '@sveltejs/kit/vite';
+import { resolve } from 'node:path';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
@@ -17,7 +18,8 @@ export default defineConfig(async () => ({
   },
   resolve: {
     alias: {
-      '$lib': 'src/lib',
+      '$lib': resolve(__dirname, 'src/lib'),
+      '$src': resolve(__dirname, 'src'),
     }
   },
   // 3. to make use of `TAURI_DEBUG` and other env variables

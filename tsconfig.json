@@ -17,6 +17,11 @@
     "module": "ES2020",
     "target": "es2022",
     "moduleResolution": "bundler",
+    "baseUrl": ".",
+    "paths": {
+      "$src/*": ["src/*"],
+      "$lib/*": ["src/lib/*"]
+    }
   },
   "include": [
     "./src/**/*.ts",
