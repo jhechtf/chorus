@@ -13,7 +13,6 @@ export class FileEntry {
   loadingState = makeLoadingState();
 
   constructor(private dirEntry: DirEntry, eagerLoad: FileEntryOpts = { eagerLoad: false, directory: '' }) {
-
   }
 
   get children() {

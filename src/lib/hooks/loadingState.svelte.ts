@@ -1,5 +1,9 @@
 export type MaybePromiseFn<T = unknown> = (() => T) | (() => Promise<T>);
 
+/**
+ * 
+ * @returns an object that updates the loading and data state of _something_, usually state somewhere in a provider
+ */
 export function makeLoadingState<T = unknown>() {
   let loading = $state(false);
   let isError = $state(false);

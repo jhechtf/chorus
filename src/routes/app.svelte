@@ -8,8 +8,13 @@ import Tabs from '../lib/components/tabs/tabs.svelte';
 import Titlebar from '../lib/components/titlebar/titlebar.svelte';
 import { workspace } from '../lib/providers/workspace.svelte';
 import { readTextFileOrCreate } from '../lib/utils/readFile';
+import { keyboardShortcuts } from '../lib/providers/keybindings.svelte';
 
 let fileTreeOpen = $state(false);
+$effect(() => {
+console.info(keyboardShortcuts.shortcuts, keyboardShortcuts.shortcutsMap);
+})
+
 
 async function init() {
   const workdir = await readTextFileOrCreate('last.txt', { baseDir: BaseDirectory.AppCache });
