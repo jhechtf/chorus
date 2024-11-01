@@ -18,18 +18,31 @@
     "core:window:allow-unmaximize",
     "core:window:allow-close",
     {
+      "identifier": "fs:allow-cache-read-recursive",
+      "allow": [
+        {
+          "path": "**"
+        }
+      ]
+    },
+    {
+      "identifier": "fs:allow-cache-write-recursive",
+      "allow": [
+        {
+          "path": "**"
+        }
+      ]
+    },
+    {
       "identifier": "fs:read-all",
       "allow": [
         {
-          "path": "$HOME/*"
-        },
-        {
-          "path": "$HOME"
+          "path": "**"
         }
       ]
     },
     {
-      "identifier": "fs:read-dirs",
+      "identifier": "fs:allow-read-text-file",
       "allow": [
         {
           "path": "**"
@@ -37,20 +50,12 @@
       ]
     },
     {
-      "identifier": "fs:allow-appcache-read-recursive",
-      "allow": [
+       "identifier": "fs:allow-write-file",
+       "allow": [
         {
           "path": "**"
         }
-      ]
-    },
-    {
-      "identifier": "fs:allow-appcache-write-recursive",
-      "allow": [
-        {
-          "path": "**"
-        }
-      ]
+       ]
     },
     "dialog:allow-open",
     "fs:default",

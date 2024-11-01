@@ -1,0 +1,45 @@
+{
+  "svelte.enable-ts-plugin": true,
+  "gitAngular.allowNewTypes": false,
+  "lnf.aliases": {
+    "$/": "${workspaceRoot}/",
+    "$svelte/routes/": "${workspaceRoot}/src/routes/",
+    "$svelte/lib/": "${workspaceRoot}/src/lib/",
+    "$svelte/components/": "${workspaceRoot}/src/lib/components/",
+    "$svelte/": "${workspaceRoot}/src/"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true
+  },
+  "gitAngular.types": [
+    {
+      "label": "ci",
+      "description": "Changes to CI configuration files and scripts"
+    },
+    {
+      "label": "docs",
+      "description": "Documentation only changes"
+    },
+    {
+      "label": "feat",
+      "description": "A new feature"
+    },
+    {
+      "label": "fix",
+      "description": "A bug fix"
+    },
+    {
+      "label": "style",
+      "description": "Changes that do not affect the meaning of the code (white space, formatting, missing, semi-colons, etc)"
+    },
+    {
+      "label": "test",
+      "description": "Adding missing tests / correcting existing tests"
+    }
+  ]
+}

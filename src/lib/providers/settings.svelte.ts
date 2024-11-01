@@ -1,4 +1,3 @@
-
 class SettingsProvider {
   settings = $state<Record<string, any>>({});
   constructor() {

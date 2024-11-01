@@ -7,7 +7,7 @@ description = "Git extension for chorus"
 
 [extension]
 
-provides = ["view.components", "keybindings"]
+provides = ["view.components", "keybindings", "commands"]
 
 [[view.components]]
 
@@ -18,3 +18,8 @@ path = "./dist/sidebar.js"
 
 name = "full-view"
 path = "./dist/full.js"
+
+[[commands]]
+id = "chorus.open-scm-sidebar"
+name = "Chorus: Open SCM Sidebar"
+description = "Opens the SCM view"

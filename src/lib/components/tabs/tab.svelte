@@ -21,7 +21,7 @@ onMount(() => {
 </script>
 
 {#if tabContext.active?.id === id}
-  <div class="tab-content">
+  <div class="tab-content h-full">
     {@render children()}
   </div>
 {/if}

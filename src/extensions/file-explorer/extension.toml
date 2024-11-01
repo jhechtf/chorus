@@ -1,0 +1,30 @@
+[package]
+
+id = "chorus-file-picker-extension"
+publisher = "chorus"
+version = "0.0.0"
+description = "File Picker"
+
+[extension]
+
+provides = ["view.components", "commands"]
+
+[[view.components]]
+
+name = "sidebar-view"
+path = "./dist/sidebar.js"
+
+[[view.components]]
+
+name = "full-view"
+path = "./dist/full.js"
+
+[[commands]]
+id = "chorus.open-file-explorer-sideview"
+name = "Chorus: Open File Explorer (Side)"
+description = "Opens the file explorer sideview"
+
+[[commands]]
+id = "chorus.open-file-explorer-fullview"
+name = "Chorus: Open File Explorer (Full)"
+description = "Opens the modal version of the file explorer, with preview"

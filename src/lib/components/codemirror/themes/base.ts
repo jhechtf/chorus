@@ -88,7 +88,7 @@ export const newMoonHighlighter = HighlightStyle.define(
   ],
   { themeType: 'dark' },
 );
-console.info(newMoonEditorTheme);
+
 export const NewMoonExtension = [
   newMoonEditorTheme,
   syntaxHighlighting(newMoonHighlighter),

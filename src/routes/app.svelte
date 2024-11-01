@@ -1,19 +1,22 @@
 <script lang="ts">
 import { BaseDirectory } from '@tauri-apps/api/path';
 import { writeTextFile } from '@tauri-apps/plugin-fs';
-import Drawer from '../lib/components/drawer/drawer.svelte';
 import Rail from '../lib/components/rail/rail.svelte';
 import Tab from '../lib/components/tabs/tab.svelte';
 import Tabs from '../lib/components/tabs/tabs.svelte';
 import Titlebar from '../lib/components/titlebar/titlebar.svelte';
 import { workspace } from '../lib/providers/workspace.svelte';
 import { readTextFileOrCreate } from '../lib/utils/readFile';
-
-let fileTreeOpen = $state(false);
+import Monaco from '../lib/components/monaco.svelte';
+import Footer from '$lib/components/footer/footer.svelte';
+import Codemirror from '$lib/components/codemirror.svelte';
+import { keybindings } from '$src/lib/providers/keybindings.svelte';
 
 async function init() {
-  const workdir = await readTextFileOrCreate('last.txt', { baseDir: BaseDirectory.AppCache });
-  if(workdir !== '') workspace.setDir(workdir.split('\n'));
+  const workdir = await readTextFileOrCreate('last.txt', {
+    baseDir: BaseDirectory.AppCache,
+  });
+  if (workdir !== '') workspace.setDir(workdir.split('\n'));
 }
 
 async function updateSettingStuffData() {
@@ -31,47 +34,55 @@ $effect(() => {
 $effect(() => {
   updateSettingStuffData();
 });
-
 </script>
 
-<svelte:document onkeydown={(e) => {
-  if(e.key === 'f') {
-    fileTreeOpen = true;
-  }
-  if(fileTreeOpen && e.key === 'Escape') {
-    fileTreeOpen = false;
-  }
-}}/>
+<svelte:document onkeydown={keybindings.normalModeListener} />
 
 <Titlebar />
-
-<Drawer class="shadow-lg overflow-auto" bind:open={fileTreeOpen} side="left">
-  <div class="p-3">
-    {#each workspace.files as file}
-      <p>{file}</p>
-    {/each}
-  </div>
-</Drawer>
-
 <div class="app-shell">
-  <Rail />
+  <div class="top flex flex-grow">
+    <!-- Rail -->
+    <Rail />
 
-  <div class="editors flex-grow flex">
-    <Tabs>
-      <Tab id="file-name" name="src/file/file1.ts">
-        I am a bunch of text here
-      </Tab>
-      <Tab id="file-name-2" name="src/file/file2.ts">
-        bitches ain't shit but hoes and tricks
-      </Tab>
-    </Tabs>
+    <!-- The editors group -->
+    <div class="editors flex-grow flex h-full">
+      <div class="group vertical w-[30%] h-full">
+        <Tabs>
+          <Tab id="file-name" name="src/file/something-else.ts">
+            <Codemirror doc=""/>
+          </Tab>
+          <Tab id="file-name-2" name="src/file/something.ts">
+            <Monaco value="let v: string = 'bob';" filepath="file:///something.ts" />
+          </Tab>
+        </Tabs>
+      </div>
+      <div class="group vertical w-[70%] border-l">
+        <div class="flex flex-col h-[50%]">
+          <Tabs>
+            <Tab id="file-name" name="src/file/something-else.ts">
+              <Codemirror doc=""/>
+            </Tab>
+          </Tabs>
+        </div>
+
+        <div class="group horizontal h-[50%]">
+          <Tabs>
+          <Tab id="file-name" name="src/file/something-else.ts">
+            <Codemirror doc="console.info('horizontal tab');"/>
+          </Tab>
+        </Tabs>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <Footer />
 </div>
 
 <style>
   .app-shell {
     display: flex;
     flex-grow: 1;
+    flex-direction: column;
   }
-
 </style>

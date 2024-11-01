@@ -23,7 +23,11 @@
   "mainBinaryName": "chorus",
   "version": "0.0.0",
   "identifier": "com.chorus.app",
-  "plugins": {},
+  "plugins": {
+    "fs": {
+      "requireLiteralLeadingDot": false
+    }
+  },
   "app": {
     "withGlobalTauri": false,
     "windows": [
@@ -32,7 +36,8 @@
         "decorations": false,
         "maximizable": true,
         "resizable": true,
-        "maximized": true
+        "maximized": true,
+        "dragDropEnabled": true
       }
     ],
     "security": {
