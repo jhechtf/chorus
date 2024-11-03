@@ -16,12 +16,19 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@codemirror/lang-javascript": "^6.2.2",
+    "@codemirror/language": "^6.10.3",
+    "@codemirror/state": "^6.4.1",
+    "@codemirror/view": "^6.34.1",
+    "@lezer/highlight": "^1.2.1",
+    "@replit/codemirror-vim": "^6.2.1",
     "@std/toml": "npm:@jsr/std__toml@^1.0.1",
     "@tauri-apps/api": ">=2.0.0-rc.0",
     "@tauri-apps/plugin-dialog": "^2.0.0",
     "@tauri-apps/plugin-fs": "~2.0.0-rc",
     "@tauri-apps/plugin-shell": ">=2.0.0-rc.0",
     "chorus": "file:",
+    "codemirror": "^6.0.1",
     "lucide-svelte": "^0.447.0",
     "monaco-editor": "^0.43.0"
   },
