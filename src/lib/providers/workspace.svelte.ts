@@ -9,9 +9,11 @@ class WorkspaceProvider {
   files: string[] = $state([]);
   loadingState = makeLoadingState();
   queue: (() => void | Promise<void>)[] = $state([]);
+
   constructor() {
     this.#init();
   }
+
   async #init() {
     console.info(
       'Workspace Provider init, figuring out how things are going to work here',
