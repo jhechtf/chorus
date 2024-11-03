@@ -6,7 +6,7 @@ use tauri::{generate_handler, Manager};
 
 mod handlers;
 mod initialize;
-mod workspace;
+// mod workspace;
 
 fn main() {
   tauri::Builder::default()
@@ -18,7 +18,9 @@ fn main() {
       let latest_txt = app.path().app_cache_dir().unwrap().join("last.txt");
       let content_str = String::from_utf8(read(latest_txt).unwrap()).unwrap();
       println!("Content: {content_str:?}");
-      app.manage(workspace::Workspace::new());
+      #[cfg(debug_assertions)]
+      app.get_webview_window("main").unwrap().open_devtools();
+      // app.manage(workspace::Workspace::new());
       Ok(())
     })
     .invoke_handler(generate_handler![
