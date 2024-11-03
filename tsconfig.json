@@ -14,7 +14,7 @@
       "DOM",
       "DOM.Iterable"
     ],
-    "module": "es2015",
+    "module": "ES2020",
     "target": "es2022",
     "moduleResolution": "bundler",
   },

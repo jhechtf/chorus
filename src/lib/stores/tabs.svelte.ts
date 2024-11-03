@@ -1,3 +1,1 @@
-export class Tabs {
-  tabs = $state<string[]>([]);
-}
+/** Not really sure how i want to do this yet */

@@ -36,6 +36,22 @@
         }
       ]
     },
+    {
+      "identifier": "fs:allow-appcache-read-recursive",
+      "allow": [
+        {
+          "path": "**"
+        }
+      ]
+    },
+    {
+      "identifier": "fs:allow-appcache-write-recursive",
+      "allow": [
+        {
+          "path": "**"
+        }
+      ]
+    },
     "dialog:allow-open",
     "fs:default",
     "dialog:default"

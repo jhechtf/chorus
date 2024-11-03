@@ -1,33 +1,19 @@
 <script lang="ts">
 import type { Snippet } from 'svelte';
 
+type SnippetProps = {
+  open: boolean;
+  close: () => void;
+};
+
 interface Props {
-  children: Snippet<
-    [
-      {
-        open: boolean;
-        close: () => void;
-      },
-    ]
-  >;
-  header?: Snippet<
-    [
-      {
-        open: boolean;
-        close: () => void;
-      },
-    ]
-  >;
-  footer?: Snippet<
-    [
-      {
-        open: boolean;
-        close: () => void;
-      },
-    ]
-  >;
+  children: Snippet<[SnippetProps]>;
+  header?: Snippet<[SnippetProps]>;
+  footer?: Snippet<[SnippetProps]>;
   open?: boolean;
   onclose?: () => void;
+  backgroundClass?: string;
+  class?: string;
 }
 
 let {
@@ -35,35 +21,38 @@ let {
   children,
   header,
   footer,
+  backgroundClass = 'backdrop:bg-zinc-700/40 w-full',
+  class: className = '',
   onclose = () => {},
 }: Props = $props();
 
 let dialogEl: HTMLDialogElement;
 
+function onDialogClose() {
+  open = false;
+  onclose();
+}
+
 $effect(() => {
   if (open && dialogEl) {
     dialogEl.showModal();
-  }
-});
-
-$effect(() => {
-  if (!open && dialogEl) {
+  } else if (!open && dialogEl) {
     dialogEl.close();
   }
 });
 
 $effect(() => {
   if (dialogEl) {
-    dialogEl.addEventListener('close', () => {
-      open = false;
-      onclose();
-    });
+    dialogEl.addEventListener('close', onDialogClose);
+    return () => {
+      dialogEl.removeEventListener('close', onDialogClose);
+    };
   }
 });
 </script>
 
 <dialog
-  class="backdrop:bg-slate-700/40 w-full"
+  class={`${backgroundClass} ${className}`}
   bind:this={dialogEl}
 >
   {#if header}
