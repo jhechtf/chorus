@@ -1,17 +1,21 @@
-<script lang="ts">
-import type { Snippet } from 'svelte';
-interface DrawerState {
+<script lang="ts" module>
+export interface DrawerState {
   open: boolean;
   close: () => void;
 }
 
-interface DrawerProps {
+export type Sides = 'left' | 'right' | 'top' | 'bottom';
+
+export interface DrawerProps {
   children: Snippet<[DrawerState, unknown]>;
   open: boolean;
   onclose?: () => void;
   class?: string;
-  side?: 'left' | 'right' | 'top' | 'bottom';
+  side?: Sides;
 }
+</script>
+<script lang="ts">
+import type { Snippet } from 'svelte';
 
 let {
   children,

@@ -33,7 +33,7 @@ setContext<TabContext>('tabs', {
 });
 </script>
 
-<div class="tabs flex flex-col flex-grow">
+<div class="tabs flex flex-col flex-grow h-full">
   <header class="flex px-4">
     {#each Object.entries(tabs) as [id, tab]}
       <button class="p-2" class:bg-zinc-800={tab === active} class:rounded-t-md={tab === active} onclick={() => active = tab}>  

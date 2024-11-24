@@ -41,39 +41,11 @@ async function initMonaco() {
   Monaco = await import('monaco-editor');
 
   const fileUri = Monaco.Uri.parse(filepath);
-  const model = Monaco.editor.createModel(value, 'typescript', fileUri);
 
-  Monaco.editor.defineTheme('default', {
-    base: 'vs-dark',
-    inherit: false,
-    rules: [
-      {
-        token: 'identifier',
-        foreground: '9CDCFE',
-      },
-      {
-        token: 'identifier.function',
-        foreground: 'DCDCAA',
-      },
-      {
-        token: 'type',
-        foreground: '1AAFB0',
-      },
-    ],
-    colors: {},
-  });
+  let model = Monaco.editor.getModel(Monaco.Uri.parse(filepath));
 
-  Monaco.editor.setTheme('default');
-}
-
-onMount(async () => {
-  
-  initMonaco();
-
-  Monaco = await import('monaco-editor');
-
-  const fileUri = Monaco.Uri.parse(filepath);
-  const model = Monaco.editor.createModel(value, 'typescript', fileUri);
+  if (model === null)
+    model = Monaco.editor.createModel(value, 'typescript', fileUri);
 
   Monaco.editor.defineTheme('default', {
     base: 'vs-dark',
@@ -103,10 +75,10 @@ onMount(async () => {
     automaticLayout: true,
     tabSize: 2,
   });
+}
 
-  return () => {
-    editor.dispose();
-  };
+onMount(async () => {
+  initMonaco();
 });
 </script>
 

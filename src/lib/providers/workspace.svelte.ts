@@ -26,7 +26,7 @@ class WorkspaceProvider {
     // Reset the files
     this.files = [];
     // Load the directories
-    for(const dir of directory) {
+    for (const dir of directory) {
       this.#loadDir(dir);
     }
   }
